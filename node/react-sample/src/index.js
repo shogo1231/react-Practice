@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { HeaderLayout } from './header/header.js' // 分割したコンポーネントを外部からインポートするとき、先頭大文字
+import { FooterLayout } from './footer/footer.js'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -149,6 +151,7 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     // 過去に戻すボタンの表示処理・クリックイベント
+    // moveが配列のindexと同等と思えばよい
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start';
 
@@ -282,6 +285,8 @@ class Buttons extends React.Component {
   }
 }
 // ========================================
+const headerLayout = ReactDOM.createRoot(document.getElementById("headerLayout"));
+headerLayout.render(<HeaderLayout />);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
@@ -291,3 +296,6 @@ shoppingList.render(<ShoppingList name="sample"/>);
 
 const buttons = ReactDOM.createRoot(document.getElementById('buttons'));
 buttons.render(<Buttons />);
+
+const footerLayout = ReactDOM.createRoot(document.getElementById("footerLayout"));
+footerLayout.render(<FooterLayout />);
